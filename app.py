@@ -1,5 +1,6 @@
-from PyQt5 import QtCore, QtGui, QtWidgets,QtTest
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5 import QtCore, QtGui, QtWidgets, QtTest
+from PyQt5.QtWidgets import QMessageBox, QFileDialog
+from PyQt5.QtCore import QDir
 from solver import *
 
 class Ui_MainWindow(object):
@@ -11,12 +12,17 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
 
         self.solvebutton = QtWidgets.QPushButton(self.centralwidget)
-        self.solvebutton.setGeometry(QtCore.QRect(50, 150, 191, 41))
+        self.solvebutton.setGeometry(QtCore.QRect(70, 120, 191, 41))
         self.solvebutton.setObjectName("solvebutton")
 
         self.resetbutton = QtWidgets.QPushButton(self.centralwidget)
-        self.resetbutton.setGeometry(QtCore.QRect(50, 240, 191, 41))
+        self.resetbutton.setGeometry(QtCore.QRect(70, 210, 191, 41))
         self.resetbutton.setObjectName("resetbutton")
+
+        self.button2 = QtWidgets.QPushButton(self.centralwidget)
+        self.button2.setGeometry(QtCore.QRect(70, 300, 191, 41))
+        self.button2.clicked.connect(self.input_text_file)
+
 
         self.solvebutton.clicked.connect(self.solveClicked)
         self.resetbutton.clicked.connect(self.resetClicked)
@@ -134,7 +140,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.plainTextEdit.setFont(font)
         self.plainTextEdit.setObjectName("plainTextEdit")
-        self.plainTextEdit.setPlaceholderText("Langkah")
+        self.plainTextEdit.setPlaceholderText("Langkah:")
         self.plainTextEdit.setReadOnly(True)
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -154,6 +160,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "15 Puzzle Solver"))
         self.solvebutton.setText(_translate("MainWindow", "Solve"))
         self.resetbutton.setText(_translate("MainWindow", "Reset"))
+        self.button2.setText(_translate("MainWindow", "Input from File (.txt)"))
         self.label.setText(_translate("MainWindow", "15 Puzzle Solver"))
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(False)
@@ -214,7 +221,7 @@ class Ui_MainWindow(object):
             return False, []
         try:
             for i in range(len(val)):
-                if val[i] == "" or val[i]==" ":
+                if val[i] == "" or val[i]==" " or val[i] == "-":
                     val[i] = 16
                 val[i] = int(val[i])
         except:
@@ -276,6 +283,42 @@ class Ui_MainWindow(object):
         msg.setText("Input Error!!         ")
         msg.setIcon(QMessageBox.Warning)
         x= msg.exec_()
+
+    def input_text_file(self):
+        dialog = QFileDialog()
+        dialog.setFileMode(QFileDialog.AnyFile)
+        dialog.setFilter(QDir.Files)
+        if dialog.exec_():
+            file_name = dialog.selectedFiles()
+            if file_name[0].endswith('.txt'):
+                with open(file_name[0], 'r') as f:
+                    teks = f.read()
+                    f.close()
+            else:
+                self.popupError()
+                return 
+        teks = teks.split("\n")
+        if len(teks) != 4:
+            self.popupError()
+            return 
+        line1 = teks[0]
+        line2 = teks[1]
+        line3 = teks[2]
+        line4 = teks[3]
+        line1 = line1.split(" ")
+        line2 = line2.split(" ")
+        line3 = line3.split(" ")
+        line4 = line4.split(" ")
+        if (len(line1) != 4) or (len(line2) != 4) or (len(line3) != 4) or (len(line4) != 4):
+            self.popupError()
+            return
+        res = line1 + line2 + line3 + line4
+        for i in range(len(res)):
+            if res[i] == "-":
+                res[i] = ""
+        self.changeValue(res)
+        
+
 
 if __name__ == "__main__":
     import sys
