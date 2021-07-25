@@ -10,6 +10,12 @@
 - Run the command `python app.py` to run the application.
 ### Using the Program
 - Input the 15 puzzle into the GUI by inputting numbers into the puzzle in the GUI or click the `Input from File(.txt)` button to input the puzzle through txt files. The format for the txt file can be found in the folder `test` on the file `format.txt`.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/68438200/126909924-8048bf22-c945-4d6c-a6b3-168c75c6ce82.png" /> <br>
+  GUI for the 15 Puzzle Solver
+</p>
+
 - Click the `Solve` button to solve the 15 puzzle. The steps to solve the puzzle will appear on the text box in the bottom part of the GUI. The animation for the steps to solve the puzzle will play on the right side on the GUI.
 - Click the `Reset` button to reset the puzzle in the GUI into the default state.
 
