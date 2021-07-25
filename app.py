@@ -242,8 +242,10 @@ class Ui_MainWindow(object):
         else:
             p = check[1]
             if kurang(p) == False:
+                print("Puzzle unsolvable")
                 self.popupUnsolvable()
             else:
+                print("Puzzle solvable")
                 res, found = astar(p)
                 path = res[2]
                 langkah = res[4]
