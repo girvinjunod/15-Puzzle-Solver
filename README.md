@@ -1,6 +1,14 @@
 # 15 Puzzle Solver
 # How to Run
-- Run the command `python app.py`.
+## Dependencies
+- Python 3.9.4 (Tested on this version, other versions may not work) 
+- PyQT5
+
+### Setup
+- Install Python, preferably the same version as the one listed above 
+- Run the command `pip install -r req.txt` to install the python libraries used.
+- Run the command `python app.py` to run the application.
+### Using the Program
 - Input the 15 puzzle into the GUI by inputting numbers into the puzzle in the GUI or click the `Input from File(.txt)` button to input the puzzle through txt files. The format for the txt file can be found in the folder `test` on the file `format.txt`.
 - Click the `Solve` button to solve the 15 puzzle. The steps to solve the puzzle will appear on the text box in the bottom part of the GUI. The animation for the steps to solve the puzzle will play on the right side on the GUI.
 - Click the `Reset` button to reset the puzzle in the GUI into the default state.
