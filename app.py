@@ -140,7 +140,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.plainTextEdit.setFont(font)
         self.plainTextEdit.setObjectName("plainTextEdit")
-        self.plainTextEdit.setPlaceholderText("Langkah:")
+        self.plainTextEdit.setPlaceholderText("Steps:")
         self.plainTextEdit.setReadOnly(True)
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -257,7 +257,7 @@ class Ui_MainWindow(object):
                 print(langkah)
 
     def outLangkah(self,l):
-        teks = "Langkah: "
+        teks = "Steps: "
         for i in range(len(l)):
             if i != len(l)-1:
                 teks += l[i] + ", "

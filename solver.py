@@ -172,25 +172,25 @@ def astar(entry):
         if atas != False and atas not in listvisited:
             anakatas = buatanak(atas, jarak, path)
             l = langkah[:]
-            l.append("Atas")
+            l.append("Up")
             anakatas.append(l)
             listjalan.enqueue(anakatas)
         if bawah != False and bawah not in listvisited:
             anakbawah = buatanak(bawah, jarak, path)
             l = langkah[:]
-            l.append("Bawah")
+            l.append("Down")
             anakbawah.append(l)
             listjalan.enqueue(anakbawah)
         if kiri != False and kiri not in listvisited:
             anakkiri = buatanak(kiri, jarak, path)
             l = langkah[:]
-            l.append("Kiri")
+            l.append("Left")
             anakkiri.append(l)
             listjalan.enqueue(anakkiri)
         if kanan != False and kanan not in listvisited:
             anakkanan = buatanak(kanan, jarak, path)
             l = langkah[:]
-            l.append("Kanan")
+            l.append("Right")
             anakkanan.append(l)
             listjalan.enqueue(anakkanan)
 
