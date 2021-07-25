@@ -12,7 +12,7 @@
 - Input the 15 puzzle into the GUI by inputting numbers into the puzzle in the GUI or click the `Input from File(.txt)` button to input the puzzle through txt files. The format for the txt file can be found in the folder `test` on the file `format.txt`.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68438200/126909924-8048bf22-c945-4d6c-a6b3-168c75c6ce82.png" /> <br>
+  <img src="https://user-images.githubusercontent.com/68438200/126910101-b9d1abee-ed8e-4b5f-bf3f-4b769e583dbd.png" /> <br>
   GUI for the 15 Puzzle Solver
 </p>
 
